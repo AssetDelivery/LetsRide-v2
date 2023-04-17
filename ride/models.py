@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from model_utils import Choices
 from django.db import models
-from django import db
 
 
 TRAVEL_MEDIUM = Choices(
@@ -15,7 +14,6 @@ ASSET_TYPE = Choices(
     ('Laptop', 'laptop'),
     ('Travel_Bag', 'travel_bag'),
     ('Package', 'package')
-
 )
 
 ASSET_SENSITIVITY = Choices(

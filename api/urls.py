@@ -39,5 +39,7 @@ urlpatterns = [
     path('requester/<int:pk>/get/', requester.RequesterDetailAPIView.as_view(), name='rider_get'),
     path('requester/<int:pk>/update/', requester.RequesterUpdateAPIView.as_view(), name='rider-update'),
     path('requester/<int:pk>/delete/', requester.RequesterDeleteAPIView.as_view(), name='rider-delete'),
-    path('requesters/<int:pk>/', requester.RequesterMixinView.as_view(), name='riders-get')
+    path('requesters/<int:pk>/', requester.RequesterMixinView.as_view(), name='riders-get'),
+
+    path('hello/', common.something, name='hello')
 ]

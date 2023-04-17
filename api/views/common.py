@@ -3,11 +3,18 @@ from ride.models import Rider, Requester
 from rest_framework import generics
 from django.forms.models import model_to_dict
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 
 def health_check(request):  # noqa
     return JsonResponse({'health': 'ok'})
+
+
+def something(request):
+    riders = Rider.objects.raw('select * from ride_rider')
+    for rider in riders:
+        print(rider)
+    return HttpResponse(riders)
 
 
 class RiderRequesterMatchAPIView(generics.GenericAPIView):

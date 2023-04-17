@@ -3,11 +3,16 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.urls import reverse_lazy
 
 
 def health_check(request): # noqa
     return HttpResponse('<h1>Ride App Health Check Ok</h1>')
+
+
+def index(request):
+    return render(request, 'index.html')
 
 
 class CustomLoginView(LoginView):

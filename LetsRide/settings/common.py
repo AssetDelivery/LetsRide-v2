@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'ride',
     'api',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -105,6 +107,23 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 4
 }
 
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'DEBUG'
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+    }
+}
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -135,3 +154,8 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://letsrider.herokuapp.com']
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+APPEND_SLASH=False
